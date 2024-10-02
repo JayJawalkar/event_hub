@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key, required this.title});
@@ -19,7 +19,7 @@ class _HomeState extends State<Home> {
     String location = "Pune,Hadapsar";
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue,
+        backgroundColor: const Color.fromRGBO(28, 88, 242, 1),
         leading: Padding(
           padding: const EdgeInsets.only(left: 12.0),
           child: Row(
@@ -38,12 +38,21 @@ class _HomeState extends State<Home> {
         title: Center(
           child: Column(
             children: [
-              const Text(
-                "Current Location",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
-                ),
+              const Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Current Location",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                    ),
+                  ),
+                  Icon(
+                    Icons.arrow_drop_down,
+                    color: Colors.white,
+                  )
+                ],
               ),
               Text(
                 location,
@@ -102,24 +111,88 @@ class _HomeState extends State<Home> {
               ],
             ),
           ),
-          Row(
+          Column(
             children: [
-              Container(
-                margin: const EdgeInsets.all(18),
-                child: const Text(
-                  "Suggested",
-                  style: TextStyle(fontSize: 22),
-                ),
-              ),
-              Stack(
+              Row(
                 children: [
-                  SvgPicture.asset(
-                    "assets/code.jpg",
-                    fit: BoxFit.cover,
+                  Container(
+                    margin: const EdgeInsets.all(18),
+                    child: const Row(
+                      children: [
+                        Text(
+                          "Suggested",
+                          style: TextStyle(fontSize: 22),
+                        ),
+                        SizedBox(
+                          width: 190,
+                        ),
+                        Text(
+                          "See all >",
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.blue,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ],
+              ),
+              Container(
+                margin: const EdgeInsets.all(15),
+                padding: const EdgeInsets.all(15),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5),
+                    color: const Color.fromRGBO(255, 199, 0, 1)),
+                child: Row(
+                  children: [
+                    SvgPicture.asset(
+                      "assets/images/coding.svg",
+                      width: 150, // Optional: specify width
+                      height: 150, // Optional: specify height
+                    ),
+                    const Spacer(),
+                    Column(
+                      children: [
+                        const Text(
+                          "  Coding Masters \n by Computer ",
+                          style: TextStyle(color: Colors.black, fontSize: 18),
+                        ),
+                        ElevatedButton.icon(
+                          onPressed: () {},
+                          label: const Text("Participate"),
+                          icon: const Icon(Icons.join_right_sharp),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               )
             ],
+          ),
+          Container(
+            padding: const EdgeInsets.all(20),
+            child: const Row(
+              children: [
+                Text(
+                  "New",
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+                SizedBox(
+                  width: 250,
+                ),
+                Text(
+                  "See all >",
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.blue,
+                  ),
+                ),
+              ],
+            ),
           )
         ],
       ),
